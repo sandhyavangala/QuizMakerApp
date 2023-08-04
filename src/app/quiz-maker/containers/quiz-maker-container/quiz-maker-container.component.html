@@ -1,0 +1,35 @@
+<div style="text-align: center;margin-top: 2%;margin-bottom: 2%;">
+    <h3>QUIZ MAKER</h3>
+</div>
+<div class="parentContainer">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-3">
+            <select id="categorySelect" [(ngModel)]="selectedCategory">
+                <option value="0" selected>Select a Category</option>
+                <option *ngFor="let category of categoryList.trivia_categories" [ngValue]="category.id">
+                    {{category.name}}</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <select id="difficultySelect" [(ngModel)]="selectedDifficlty">
+                <option value="Select difficulty" selected>Select difficulty</option>
+                <option *ngFor="let difficulty of difficultyLevels" [ngValue]="difficulty.id">{{difficulty.name}}
+                </option>
+            </select>
+        </div>
+        <div class="col-md-1">
+            <button id="createBtn" (click)="loadQuestionnaire()">Create</button>
+        </div>
+        <div class="col-md-5"></div>
+    </div>
+    <div>
+        <quiz-maker-questionnaire (enableSubmit)="enableSubmit($event)"></quiz-maker-questionnaire>
+    </div>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-6"><button id="btnSubmit" *ngIf="enableSubmitBtn" style="width: 100%;" class="btn btn-secondary btn-sm"
+                (click)="submitResults()">Submit</button></div>
+        <div class="col-md-5"></div>
+    </div>
+</div>

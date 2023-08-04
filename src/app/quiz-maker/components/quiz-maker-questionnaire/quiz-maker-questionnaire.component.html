@@ -1,0 +1,16 @@
+<div class="questionarrie-margin">
+    <div *ngFor="let questionnaire of questionsList">
+        <div>
+            <span>
+                {{questionnaire.question}}
+            </span>
+        </div>
+        <div>
+            <span *ngFor="let answer of questionnaire.answers">
+                <button [ngClass]="answer.selectedAnswer?'btn-success':' btn-outline-success'" type="button"
+                    class="btn btn-margin"
+                    (click)="highlightAnswer(questionnaire.question,answer.answer)">{{answer.answer}}</button>
+            </span>
+        </div>
+    </div>
+</div>

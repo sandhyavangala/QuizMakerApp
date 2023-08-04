@@ -1,0 +1,36 @@
+<h3 style="text-align: center;margin-top: 2%;margin-bottom: 2%;">Results</h3>
+<div class="questionarrie-margin disableDiv">
+    <div *ngFor="let questionnaire of resultList">
+        <div>
+            <span>
+                {{questionnaire.question}}
+            </span>
+        </div>
+        <div>
+            <span *ngFor="let answer of questionnaire.answers">
+                <button [ngClass]="questionnaire.isSelectedAnswerCorrect && 
+                 (answer.answer==questionnaire.correct_answer)?'btn-success':
+                 (answer.selectedAnswer?'btn-danger': 
+                 ((answer.answer==questionnaire.correct_answer)?'btn-success':'btn-outline-success')
+                    )" type="button" class="btn btn-margin">{{answer.answer}}</button>
+
+            </span>
+        </div>
+    </div>
+</div>
+<div class="questionarrie-margin">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-6">
+            <div style="width: 100%;margin-left: 2%;" [style.background-color]='resultColor'>You scored {{score}} out of
+                {{totalScore}}</div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-6"><button id="btnCreateNewQuiz" style="width: 100%;" class="btn btn-secondary btn-sm btn-margin"
+                (click)="createNewQuiz()">Create a new quiz</button></div>
+        <div class="col-md-1"></div>
+    </div>
+</div>
